@@ -5,8 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MaintenanceHelper.UI"
         mc:Ignorable="d"
-        Title="Maintenance Helper" Height="450" Width="800">
-    <Grid>
-        
+        Title="Maintenance Helper" Height="450" Width="800" FontSize="14">
+    <Grid ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="400"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <!--<ListView Grid.Row="0" ItemsSource="{Binding MajorAlarms}"
+                                SelectedItem="{Binding SelectedMajorAlarm,Mode=TwoWay}"
+                                DisplayMemberPath="AlarmTime"/>-->
+
+        <ListView ItemsSource="{Binding MajorAlarms}" 
+                  SelectedItem="{Binding SelectMajorAlarm,Mode=TwoWay}">
+            
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="INDEX" Width="80" DisplayMemberBinding="{Binding Index}" />
+                    <GridViewColumn Header="CODE" Width="100" DisplayMemberBinding="{Binding AlarmType}" />
+                    <GridViewColumn Header="DATE" Width="200" DisplayMemberBinding="{Binding AlarmTime}" />
+                    <GridViewColumn Header="TASK" Width="150" DisplayMemberBinding="{Binding AlarmTask}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+        </Grid>
     </Grid>
 </Window>

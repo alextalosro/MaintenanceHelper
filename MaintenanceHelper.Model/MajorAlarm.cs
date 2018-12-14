@@ -1,6 +1,6 @@
 ﻿namespace MaintenanceHelper.Model
 {
-    public class Alarm
+    public class MajorAlarm
     {
         public uint Index { get; set; }
 
