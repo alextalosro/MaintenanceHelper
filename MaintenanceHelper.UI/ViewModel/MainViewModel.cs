@@ -7,37 +7,20 @@ namespace MaintenanceHelper.UI.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
-        private IMajorAlarmDataService _majorAlarmDataService;
-        private MajorAlarm _selectedMajorAlarm;
 
-        public MainViewModel(IMajorAlarmDataService majorAlarmDataService)
+
+        public MainViewModel(INavigationViewModel navigationViewModel)
         {
-            MajorAlarms = new ObservableCollection<MajorAlarm>();
-            _majorAlarmDataService = majorAlarmDataService;
+            NavigationViewModel = navigationViewModel;
         }
 
         public void Load()
         {
-            var majorAlarm = _majorAlarmDataService.GetAll();
-            MajorAlarms.Clear();
-
-            foreach(var item in majorAlarm)
-            {
-                MajorAlarms.Add(item);
-            }
+            NavigationViewModel.Load();
         }
 
-        public ObservableCollection<MajorAlarm> MajorAlarms { get; set; }
-
-        public MajorAlarm SelectedMajorAlarm
-        {
-            get { return _selectedMajorAlarm; }
-            set
-            {
-                _selectedMajorAlarm = value;
-                OnPropertyChanged();
-            }
-        }
+        public INavigationViewModel NavigationViewModel { get; }
+        
 
     }
 }
